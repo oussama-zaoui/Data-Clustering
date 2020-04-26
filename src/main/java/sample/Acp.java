@@ -1,6 +1,7 @@
 package sample;
 
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 
@@ -13,25 +14,44 @@ public class Acp {
     }
 
 
+    public ArrayList<Double> moy(){
+
+        ArrayList<Double> moys=new ArrayList<>();
+        double moy=0;
+
+        for (int i = 0; i <this.dataSet.getCol() ; i++) {
+            for (int j = 0; j <this.dataSet.getRow() ; j++) {
+                moy=moy+this.dataSet.getData()[j][i];
+            }
+            moy=moy/this.dataSet.getRow();
+            moys.add(moy);
+            moy=0;
+        }
+
+        return moys;
+
+    }
+
+
 
     public ArrayList<ArrayList<Double>> calculMoyAndEcart(){
         ArrayList<Double> ecarts =new ArrayList<>();
-        ArrayList<Double> moys=new ArrayList<>();
+        ArrayList<Double> moys=new ArrayList<>(this.moy());
         ArrayList<ArrayList<Double>> moyAndEcart=new ArrayList<>();
-        double moy=0;
         double ecart;
         double Xbar=0;
         for (int i = 0; i <this.dataSet.getCol() ; i++) {
             for (int j = 0; j <this.dataSet.getRow(); j++) {
-                moy=moy+this.dataSet.getData()[j][i];
-               Xbar=Xbar+Math.pow(this.dataSet.getData()[j][i],2);
+
+               Xbar=Xbar+Math.pow(this.dataSet.getData()[j][i]-moys.get(i),2);
             }
+
             Xbar=Xbar/this.dataSet.getRow();
-            ecart=Math.sqrt(Math.pow(Xbar-(Math.pow(moy,2)),2));
+
+            ecart=Math.sqrt(Xbar);
             ecarts.add(ecart);
-            moys.add(moy);
             Xbar=0;
-            moy=0;
+
         }
         moyAndEcart.add(moys);
         moyAndEcart.add(ecarts);
