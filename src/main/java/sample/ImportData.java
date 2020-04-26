@@ -18,7 +18,7 @@ public class ImportData {
 
 
 
-    public double [][] readExel(String uri)throws IOException{
+    public double [][] readExcel(String uri)throws IOException{
         String inputFileName=new File(uri).getName();
 
         switch (inputFileName.substring(inputFileName.lastIndexOf(".")+1,inputFileName.length())){
@@ -37,7 +37,7 @@ public class ImportData {
 
     public double [][] readXLSX(String uri)throws IOException {
 
-        double [][] data = new double[100][100];
+        double [][] data;
 
         int rowCount=-1;
         int colCount;
@@ -49,6 +49,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
+        data=new double[sheet.getPhysicalNumberOfRows()][row.getPhysicalNumberOfCells()];
         while(itr.hasNext()){
             rowCount++;
             colCount=0;

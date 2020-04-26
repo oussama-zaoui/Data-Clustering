@@ -27,11 +27,11 @@ public class Main extends Application {
     public static void main(String[] args) {
         ImportData data=new ImportData();
         try{
-        double [][] dataset=data.readExel("/home/ouss/file_example_XLS_10.xls");
+        double [][] dataSet=data.readExcel("/home/ouss/file_example_XLS_10.xls");
 
             for (int i = 0; i <10 ; i++) {
                 for (int j = 0; j <8 ; j++) {
-                    System.out.print(dataset[i][j]);
+                    System.out.print(dataSet[i][j]);
                 }
                 System.out.println("");
             }
