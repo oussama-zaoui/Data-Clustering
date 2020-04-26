@@ -49,7 +49,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
-        data=new DataSet(sheet.getPhysicalNumberOfRows(),row.getPhysicalNumberOfCells());
+        data=new DataSet(sheet.getActiveCell().getRow(),row.getPhysicalNumberOfCells());
         while(itr.hasNext()){
             rowCount++;
             colCount=0;

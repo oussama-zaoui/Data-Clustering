@@ -29,9 +29,12 @@ public class Main extends Application {
         try{
         DataSet dataSet=data.readExcel("/home/ouss/file_example_XLS_10.xls");
 
+        Acp acp=new Acp(dataSet);
+        acp.centerAndReduce();
+
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {
-                    System.out.print(dataSet.getData()[i][j]+" ");
+                    System.out.print(acp.dataSet.getData()[i][j]+" ");
                 }
                 System.out.println("");
             }
