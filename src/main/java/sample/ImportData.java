@@ -18,7 +18,7 @@ public class ImportData {
 
 
 
-    public double [][] readExcel(String uri)throws IOException{
+    public DataSet readExcel(String uri)throws IOException{
         String inputFileName=new File(uri).getName();
 
         switch (inputFileName.substring(inputFileName.lastIndexOf(".")+1,inputFileName.length())){
@@ -35,9 +35,9 @@ public class ImportData {
     }
 
 
-    public double [][] readXLSX(String uri)throws IOException {
+    public DataSet readXLSX(String uri)throws IOException {
 
-        double [][] data;
+        DataSet data;
 
         int rowCount=-1;
         int colCount;
@@ -49,7 +49,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
-        data=new double[sheet.getPhysicalNumberOfRows()][row.getPhysicalNumberOfCells()];
+        data=new DataSet(sheet.getPhysicalNumberOfRows(),row.getPhysicalNumberOfCells());
         while(itr.hasNext()){
             rowCount++;
             colCount=0;
@@ -59,7 +59,7 @@ public class ImportData {
                 Cell cell=cellIterator.next();
 
                if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
-                   data[rowCount][colCount]=cell.getNumericCellValue();
+                   data.getData()[rowCount][colCount]=cell.getNumericCellValue();
 
                    colCount++;
                }
@@ -77,9 +77,9 @@ public class ImportData {
     }
 
 
-    public double [][] readXLS(String uri) throws IOException{
+    public DataSet readXLS(String uri) throws IOException{
 
-        double [][] data = new double[100][100];
+        DataSet data;
 
         int rowCount=-1;
         int colCount;
@@ -91,6 +91,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
+        data=new DataSet(sheet.getActiveCell().getRow(),row.getPhysicalNumberOfCells());
         while(itr.hasNext()){
             rowCount++;
             colCount=0;
@@ -100,7 +101,7 @@ public class ImportData {
                 Cell cell=cellIterator.next();
 
                 if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
-                    data[rowCount][colCount]=cell.getNumericCellValue();
+                    data.getData()[rowCount][colCount]=cell.getNumericCellValue();
 
                     colCount++;
                 }
