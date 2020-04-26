@@ -27,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         ImportData data=new ImportData();
         try{
-        double [][] dataset=data.readXLS("/home/ouss/file_example_XLSX_10.xlsx");
+        double [][] dataset=data.readExel("/home/ouss/file_example_XLS_10.xls");
 
             for (int i = 0; i <10 ; i++) {
                 for (int j = 0; j <8 ; j++) {
