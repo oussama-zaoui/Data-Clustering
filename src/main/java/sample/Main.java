@@ -27,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         ImportData data=new ImportData();
         try{
-        DataSet dataSet=data.readExcel("/home/ouss/file_example_XLS_10.xls");
+        DataSet dataSet=data.readExcel("/home/ouss/chekla.xlsx");
 
         Acp acp=new Acp(dataSet);
         acp.centerAndReduce();
@@ -38,7 +38,7 @@ public class Main extends Application {
                 }
                 System.out.println("");
             }
-
+         acp.cammon();
         }catch (IOException e){
             e.printStackTrace();
         }

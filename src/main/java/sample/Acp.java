@@ -1,6 +1,13 @@
 package sample;
 
 
+
+
+import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.linear.MatrixUtils;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.stat.correlation.Covariance;
+
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
@@ -73,6 +80,18 @@ public class Acp {
         }
 
     }
+
+
+    public void cammon(){
+        RealMatrix realMatrix= MatrixUtils.createRealMatrix(this.dataSet.getData());
+        Covariance covariance=new Covariance(realMatrix);
+        RealMatrix mariceCorrelaction=covariance.getCovarianceMatrix();
+        EigenDecomposition ed=new EigenDecomposition(mariceCorrelaction);
+        System.out.println(covariance.getCovarianceMatrix().getData()[0][0]);
+        System.out.println(ed.getRealEigenvalues().length);
+
+    }
+
 
 
 
