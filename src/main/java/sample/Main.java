@@ -25,23 +25,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        ImportData data=new ImportData();
-        try{
-        DataSet dataSet=data.readExcel("/home/ouss/chekla.xlsx");
 
-        Acp acp=new Acp(dataSet);
-        acp.centerAndReduce();
-
-            for (int i = 0; i <dataSet.getRow() ; i++) {
-                for (int j = 0; j <dataSet.getCol() ; j++) {
-                    System.out.print(acp.dataSet.getData()[i][j]+" ");
-                }
-                System.out.println("");
-            }
-         acp.cammon();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
         launch(args);
     }
 }
