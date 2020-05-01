@@ -14,8 +14,13 @@ public class Coordonée {
 
 
 
-    public double distance(@NotNull Coordonée point1, @NotNull Coordonée point2){
-        return Math.sqrt(Math.pow(point2.x-point1.x,2)+Math.pow(point2.y-point1.y,2));
+    public double distance( @NotNull Coordonée point2){
+        return Math.sqrt(Math.pow(point2.x-this.x,2)+Math.pow(point2.y-this.y,2));
+    }
+
+    public Coordonée center(@NotNull Coordonée point2){
+
+        return new Coordonée((point2.x+this.x)/2,(point2.y+this.y)/2);
     }
 
     public double getX() {

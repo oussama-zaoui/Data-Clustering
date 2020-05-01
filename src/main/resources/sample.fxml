@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.chart.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -11,5 +12,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Pane fx:id="pane" layoutX="154.0" layoutY="38.0" prefHeight="637.0" prefWidth="734.0" />
+      <Button layoutX="35.0" layoutY="626.0" mnemonicParsing="false" onAction="#goClustering" text="Button" />
    </children>
 </AnchorPane>

@@ -1,6 +1,8 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.BubbleChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
@@ -12,11 +14,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 
 public class Controller implements Initializable {
 
     public Pane pane;
+
+    private Acp acp;
+    private DataSet dataSet;
+    private Kmeans kmeans;
 
 
     @Override
@@ -25,7 +32,7 @@ public class Controller implements Initializable {
 
         ImportData data=new ImportData();
         try{
-            DataSet dataSet=data.readExcel("/home/ouss/MOCK_DATA(2).xlsx");
+             dataSet=data.readExcel("/home/ouss/MOCK_DATA(2).xlsx");
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {
@@ -34,10 +41,10 @@ public class Controller implements Initializable {
                 System.out.println();
             }
 
-            Acp acp=new Acp(dataSet);
+             acp=new Acp(dataSet);
             acp.centerAndReduce();
             ArrayList<Coordonée> coordonées=new ArrayList<>(acp.cammon());
-
+/*
             final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
             final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
             ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);
@@ -46,27 +53,45 @@ public class Controller implements Initializable {
                 series1.getData().add(new XYChart.Data(coordonées.get(i).getX(),coordonées.get(i).getY()));
                 //System.out.println(coordonées.get(i).getX()+"  "+coordonées.get(i).getY() );
             }
-
-
-
-
-
-
-
-            chart.getData().add(series1);
-            pane.getChildren().add(chart);
+*/
+           // chart.getData().add(series1);
+            //pane.getChildren().add(chart);
 
 
         }catch (IOException e){
             e.printStackTrace();
         }
 
+    }
 
 
+    public void goClustering(ActionEvent evente){
+           pane.getChildren().clear();
+            kmeans=new Kmeans(acp,3);
+            ArrayList<Cluster> clusters=new ArrayList<>(kmeans.clauster());
+        final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
+        final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
+        ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);
+        XYChart.Series series1=new XYChart.Series();
+        for (int i = 0; i <clusters.size() ; i++) {
+            if (i==0)
+
+            for (int j = 0; j <clusters.get(i).getCoordonées().size() ; j++) {
+                series1.getData().add(new XYChart.Data(clusters.get(i).getCoordonées().get(j).getX(),clusters.get(i).getCoordonées().get(j).getY()));
+            }
+            chart.getData().add(series1);
+            Set<Node> nodes=chart.lookupAll(" .series1"+0);
+            for (Node n: nodes){
+                n.setStyle("-fx-background-color: "+clusters.get(i).getCode_color());
+
+            }
 
 
+            //System.out.println(coordonées.get(i).getX()+"  "+coordonées.get(i).getY() );
+        }
 
-
+        pane.getChildren().add(chart);
 
     }
+
 }
