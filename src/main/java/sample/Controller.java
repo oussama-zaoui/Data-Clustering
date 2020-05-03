@@ -44,7 +44,7 @@ public class Controller implements Initializable {
              acp=new Acp(dataSet);
             acp.centerAndReduce();
             ArrayList<Coordonée> coordonées=new ArrayList<>(acp.cammon());
-/*
+
             final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
             final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
             ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);
@@ -53,9 +53,9 @@ public class Controller implements Initializable {
                 series1.getData().add(new XYChart.Data(coordonées.get(i).getX(),coordonées.get(i).getY()));
                 //System.out.println(coordonées.get(i).getX()+"  "+coordonées.get(i).getY() );
             }
-*/
-           // chart.getData().add(series1);
-            //pane.getChildren().add(chart);
+
+            chart.getData().add(series1);
+            pane.getChildren().add(chart);
 
 
         }catch (IOException e){
