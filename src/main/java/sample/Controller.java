@@ -32,7 +32,7 @@ public class Controller implements Initializable {
 
         ImportData data=new ImportData();
         try{
-             dataSet=data.readExcel("/home/ouss/MOCK_DATA(2).xlsx");
+             dataSet=data.readExcel("/home/ouss/MOCK_DATA.xlsx");
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {
@@ -72,19 +72,16 @@ public class Controller implements Initializable {
         final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
         final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
         ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);
-        XYChart.Series series1=new XYChart.Series();
+
         for (int i = 0; i <clusters.size() ; i++) {
-            if (i==0)
+
+                XYChart.Series series1=new XYChart.Series();
 
             for (int j = 0; j <clusters.get(i).getCoordonées().size() ; j++) {
                 series1.getData().add(new XYChart.Data(clusters.get(i).getCoordonées().get(j).getX(),clusters.get(i).getCoordonées().get(j).getY()));
             }
-            chart.getData().add(series1);
-            Set<Node> nodes=chart.lookupAll(" .series1"+0);
-            for (Node n: nodes){
-                n.setStyle("-fx-background-color: "+clusters.get(i).getCode_color());
 
-            }
+            chart.getData().add(series1);
 
 
             //System.out.println(coordonées.get(i).getX()+"  "+coordonées.get(i).getY() );
