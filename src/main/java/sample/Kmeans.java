@@ -43,6 +43,7 @@ public class Kmeans {
         }
 
         double version=1;
+        int maxItr=0;
         ArrayList<Double> versions=new ArrayList<>();
        while (true) {
             double min = Double.MAX_VALUE;
@@ -64,13 +65,14 @@ public class Kmeans {
             }
            versions.add(version);
 
-           if (versions.size()>1 && versions.get(versions.size() - 1).equals(versions.get(versions.size() - 2)))
+           if ((versions.size()>1 && versions.get(versions.size() - 1).equals(versions.get(versions.size() - 2))) || maxItr==100)
                 break;
            else
             {
                 for (int i = 0; i <clausters.size() ; i++) {
                     clausters.get(i).getCoordonées().clear();
                 }
+                maxItr++;
            }
 
         }

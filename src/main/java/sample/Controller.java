@@ -32,7 +32,7 @@ public class Controller implements Initializable {
 
         ImportData data=new ImportData();
         try{
-             dataSet=data.readExcel("/home/ouss/MOCK_DATA.xlsx");
+             dataSet=data.readExcel("/home/ouss/MOCK_DATA(3).xlsx");
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {
