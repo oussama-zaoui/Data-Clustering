@@ -32,7 +32,7 @@ public class Controller implements Initializable {
 
         ImportData data=new ImportData();
         try{
-             dataSet=data.readExcel("/home/ouss/MOCK_DATA(3).xlsx");
+         dataSet=data.readExcel("/home/ouss/maDATA.xlsx");
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {
@@ -67,7 +67,7 @@ public class Controller implements Initializable {
 
     public void goClustering(ActionEvent evente){
            pane.getChildren().clear();
-            kmeans=new Kmeans(acp,3);
+            kmeans=new Kmeans(acp,4);
             ArrayList<Cluster> clusters=new ArrayList<>(kmeans.clauster());
         final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
         final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
