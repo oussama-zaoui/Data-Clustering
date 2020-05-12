@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Pane fx:id="pane" layoutX="154.0" layoutY="38.0" prefHeight="637.0" prefWidth="734.0" />
-      <Button layoutX="35.0" layoutY="626.0" mnemonicParsing="false" onAction="#goClustering" text="Button" />
+      <TabPane layoutX="204.0" layoutY="45.0" prefHeight="640.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+               <content>
+                  <TableView prefHeight="575.0" prefWidth="684.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+               </content>
+            </Tab>
+          <Tab text="Untitled Tab 2">
+               <content>
+                  <Pane fx:id="grandPane" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="120.0" layoutY="501.0" mnemonicParsing="false" onAction="#plot" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #2fba93;" text="PLOT" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="546.0" layoutY="84.0" prefHeight="25.0" prefWidth="123.0" promptText="Clusters(K)" />
+                        <TextField layoutX="546.0" layoutY="144.0" prefHeight="25.0" prefWidth="123.0" promptText="MAXIterations" />
+                        <Text fill="#2fba93" layoutX="174.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="K-Means Clustering" textAlignment="CENTER" wrappingWidth="330.7294921875">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
+                        <Pane fx:id="pane" layoutX="3.0" layoutY="53.0" prefHeight="387.0" prefWidth="523.0" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <VBox prefHeight="682.0" prefWidth="206.0" style="-fx-background-color: #2fba93;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="206.0" text="IMPORT(xls/xslx)" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
