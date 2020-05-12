@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+
 
 
 import java.io.IOException;
@@ -22,6 +24,8 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     public Pane pane;
+    public TextField k;
+    public TextField maxIterations;
 
     private Acp acp;
     private DataSet dataSet;
@@ -71,9 +75,9 @@ public class Controller implements Initializable {
 
 
     public void plot(ActionEvent evente){
-           pane.getChildren().clear();
-            kmeans=new Kmeans(acp,4);
-            ArrayList<Cluster> clusters=new ArrayList<>(kmeans.clauster());
+            pane.getChildren().clear();
+            kmeans=new Kmeans(acp,Integer.valueOf(k.getText()));
+            ArrayList<Cluster> clusters=new ArrayList<>(kmeans.clauster(Integer.valueOf(maxIterations.getText())));
         final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
         final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
         ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);

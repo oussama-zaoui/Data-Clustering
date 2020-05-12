@@ -34,7 +34,7 @@ public class Kmeans {
     }
 
 
-    public ArrayList<Cluster> clauster() {
+    public ArrayList<Cluster> clauster(int maxIterations) {
         ArrayList<Coordonée> points = new ArrayList<>(this.input.cammon());
         ArrayList<Cluster> clausters = new ArrayList<>(initialClausters(this.k, points));
         ArrayList<Coordonée> centers = new ArrayList<>();
@@ -65,7 +65,7 @@ public class Kmeans {
             }
            versions.add(version);
 
-           if ((versions.size()>1 && versions.get(versions.size() - 1).equals(versions.get(versions.size() - 2))) || maxItr==100)
+           if ((versions.size()>1 && versions.get(versions.size() - 1).equals(versions.get(versions.size() - 2))) || maxItr==maxIterations)
                 break;
            else
             {
