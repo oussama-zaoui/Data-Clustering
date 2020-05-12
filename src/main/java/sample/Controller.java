@@ -2,8 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.chart.BubbleChart;
+
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
@@ -13,8 +12,9 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+
 import java.util.ResourceBundle;
-import java.util.Set;
+
 
 
 public class Controller implements Initializable {
@@ -82,7 +82,6 @@ public class Controller implements Initializable {
             }
 
             chart.getData().add(series1);
-
 
             //System.out.println(coordonées.get(i).getX()+"  "+coordonées.get(i).getY() );
         }
