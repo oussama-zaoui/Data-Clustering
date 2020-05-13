@@ -38,6 +38,11 @@
                            </font>
                         </Text>
                         <Pane fx:id="pane" layoutX="3.0" layoutY="53.0" prefHeight="387.0" prefWidth="523.0" />
+                        <Button layoutX="365.0" layoutY="501.0" mnemonicParsing="false" onAction="#clusterize" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #2fba93;" text="CLUSTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
                </content>
