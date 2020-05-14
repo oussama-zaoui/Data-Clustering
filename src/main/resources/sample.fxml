@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -13,12 +14,18 @@
         <tabs>
           <Tab text="Untitled Tab 1">
                <content>
-                  <TableView prefHeight="575.0" prefWidth="684.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <GridPane fx:id="table" gridLinesVisible="true" hgap="10.0" prefHeight="606.0" prefWidth="684.0">
+                          <columnConstraints>
+
+                          </columnConstraints>
+                          <rowConstraints>
+
+                          </rowConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
                </content>
             </Tab>
           <Tab text="Untitled Tab 2">

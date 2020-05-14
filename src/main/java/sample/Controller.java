@@ -7,9 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-
+import javafx.scene.text.Text;
 
 
 import java.io.IOException;
@@ -26,20 +30,47 @@ public class Controller implements Initializable {
     public Pane pane;
     public TextField k;
     public TextField maxIterations;
+    public GridPane table;
+
 
     private Acp acp;
     private DataSet dataSet;
     private Kmeans kmeans;
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        try {
+            displayInTable();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
+    public void displayInTable() throws IOException{
+        ImportData data =new ImportData();
+        dataSet=data.readExcel("/home/ouss/maDATA.xlsx");
+        System.out.println(table.getColumnCount());
+        System.out.println(table.getRowCount());
+
+
+      /*  for (int i = 0; i <dataSet.getCol() ; i++) {
+            table.addColumn(i,new TextField("chekla"+i));
+            System.out.println("column is: "+table.getColumnCount());
+
+        }*/
+        for (int i = 0; i <dataSet.getCol() ; i++) {
+            for (int j = 0; j <dataSet.getRow() ; j++) {
+                table.add(new Text(String.valueOf(dataSet.getData()[j][i])),i,j);
+            }
+        }
+
+    }
 
     public void plot(ActionEvent evente){
         ImportData data=new ImportData();
