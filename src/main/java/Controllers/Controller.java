@@ -53,18 +53,21 @@ public class Controller implements Initializable {
 
     public void displayInTable() throws IOException{
         ImportData data =new ImportData();
-        dataSet=data.readExcel("/home/ouss/maDATA.xlsx");
+        TableView tableView;
+        tableView=data.readExcel("/home/ouss/maDATA.xlsx");
+        dataSet=tableView.getDataSet();
         System.out.println(table.getColumnCount());
         System.out.println(table.getRowCount());
 
 
-      /*  for (int i = 0; i <dataSet.getCol() ; i++) {
-            table.addColumn(i,new TextField("chekla"+i));
+        for (int i = 0; i <tableView.getEntet().size() ; i++) {
+            table.add(new TextField(tableView.getEntet().get(i)+i),i,
+                    0);
             System.out.println("column is: "+table.getColumnCount());
 
-        }*/
+        }
         for (int i = 0; i <dataSet.getCol() ; i++) {
-            for (int j = 0; j <dataSet.getRow() ; j++) {
+            for (int j = 1; j <dataSet.getRow() ; j++) {
                 table.add(new Text(String.valueOf(dataSet.getData()[j][i])),i,j);
             }
         }
@@ -74,7 +77,7 @@ public class Controller implements Initializable {
     public void plot(ActionEvent evente){
         ImportData data=new ImportData();
         try{
-            dataSet=data.readExcel("/home/ouss/maDATA.xlsx");
+            dataSet=data.readExcel("/home/ouss/maDATA.xlsx").getDataSet();
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {

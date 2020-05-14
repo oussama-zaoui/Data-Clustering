@@ -3,6 +3,7 @@ package util;
 
 
 import model.DataSet;
+import model.TableView;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,13 +14,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImportData {
 
 
 
-    public DataSet readExcel(String uri)throws IOException{
+    public TableView readExcel(String uri)throws IOException{
         String inputFileName=new File(uri).getName();
 
         switch (inputFileName.substring(inputFileName.lastIndexOf(".")+1,inputFileName.length())){
@@ -36,9 +38,10 @@ public class ImportData {
     }
 
 
-    public DataSet readXLSX(String uri)throws IOException {
+    public TableView readXLSX(String uri)throws IOException {
 
-        DataSet data;
+        TableView table=new TableView();
+        ArrayList<String> etets=new ArrayList<>();
 
         int rowCount=-1;
         int colCount;
@@ -50,8 +53,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
-        row=itr.next();
-        data=new DataSet(sheet.getPhysicalNumberOfRows(),row.getPhysicalNumberOfCells());
+        table.setDataSet(new DataSet(sheet.getPhysicalNumberOfRows(),row.getPhysicalNumberOfCells()));
         while(itr.hasNext()){
             rowCount++;
             colCount=0;
@@ -60,8 +62,11 @@ public class ImportData {
             while (cellIterator.hasNext()){
                 Cell cell=cellIterator.next();
 
+                if (rowCount==0)
+                    etets.add(cell.getStringCellValue());
+
                if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
-                   data.getData()[rowCount][colCount]=cell.getNumericCellValue();
+                   table.getDataSet().getData()[rowCount][colCount]=cell.getNumericCellValue();
 
                    colCount++;
                }
@@ -70,18 +75,20 @@ public class ImportData {
             row=itr.next();
 
         }
+       table.setEntet(etets);
 
 
-
-        return data;
+        return table;
 
 
     }
 
 
-    public DataSet readXLS(String uri) throws IOException{
+    public TableView readXLS(String uri) throws IOException{
 
-        DataSet data;
+        TableView table=new TableView();
+        ArrayList<String> entets=new ArrayList<>(
+        );
 
         int rowCount=-1;
         int colCount;
@@ -93,7 +100,7 @@ public class ImportData {
 
         Iterator<Row> itr=sheet.iterator();
         Row row=itr.next();
-        data=new DataSet(sheet.getActiveCell().getRow(),row.getPhysicalNumberOfCells());
+        table.setDataSet(new DataSet(sheet.getActiveCell().getRow(),row.getPhysicalNumberOfCells()));
         while(itr.hasNext()){
             rowCount++;
             colCount=0;
@@ -101,9 +108,11 @@ public class ImportData {
 
             while (cellIterator.hasNext()){
                 Cell cell=cellIterator.next();
+                if (rowCount==0)
+                    entets.add(cell.getStringCellValue());
 
                 if (cell.getCellType()==Cell.CELL_TYPE_NUMERIC){
-                    data.getData()[rowCount][colCount]=cell.getNumericCellValue();
+                    table.getDataSet().getData()[rowCount][colCount]=cell.getNumericCellValue();
 
                     colCount++;
                 }
@@ -113,9 +122,9 @@ public class ImportData {
 
         }
 
+       table.setEntet(entets);
 
-
-        return data;
+        return table;
     }
 
     
