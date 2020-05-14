@@ -1,6 +1,9 @@
-package sample;
+package model;
 
-import java.lang.reflect.Array;
+import model.Acp;
+import model.Cluster;
+import model.Coordonée;
+
 import java.util.ArrayList;
 
 public class Kmeans {

@@ -1,4 +1,4 @@
-package sample;
+package Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -7,13 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import model.*;
+import util.ImportData;
 
 
 import java.io.IOException;

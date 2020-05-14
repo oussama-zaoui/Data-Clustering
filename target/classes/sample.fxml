@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
+
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
    <children>
       <TabPane layoutX="204.0" layoutY="45.0" prefHeight="640.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Untitled Tab 1">
+          <Tab text="DATA">
                <content>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
                      <content>
@@ -28,7 +27,7 @@
                   </ScrollPane>
                </content>
             </Tab>
-          <Tab text="Untitled Tab 2">
+          <Tab text="PLOT">
                <content>
                   <Pane fx:id="grandPane" prefHeight="200.0" prefWidth="200.0">
                      <children>
