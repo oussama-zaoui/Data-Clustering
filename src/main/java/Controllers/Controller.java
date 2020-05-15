@@ -11,10 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import model.*;
 import util.ImportData;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -35,6 +37,7 @@ public class Controller implements Initializable {
     private Acp acp;
     private DataSet dataSet;
     private Kmeans kmeans;
+    private String filePath="";
 
 
 
@@ -42,19 +45,15 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            displayInTable();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
     }
 
     public void displayInTable() throws IOException{
+        //table.getChildren().clear();
         ImportData data =new ImportData();
         TableView tableView;
-        tableView=data.readExcel("/home/ouss/maDATA.xlsx");
+        tableView=data.readExcel(filePath);
         dataSet=tableView.getDataSet();
         System.out.println(table.getColumnCount());
         System.out.println(table.getRowCount());
@@ -71,13 +70,30 @@ public class Controller implements Initializable {
                 table.add(new Text(String.valueOf(dataSet.getData()[j][i])),i,j);
             }
         }
+        table.setGridLinesVisible(true);
+
+    }
+
+
+    public void openFile(ActionEvent event){
+        FileChooser chooser=new FileChooser();
+        chooser.setTitle("Open Resource File");
+       File selectedFile= chooser.showOpenDialog(null);
+       if (selectedFile!=null)
+           filePath=selectedFile.getPath();
+
+        try {
+            displayInTable();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void plot(ActionEvent evente){
         ImportData data=new ImportData();
         try{
-            dataSet=data.readExcel("/home/ouss/maDATA.xlsx").getDataSet();
+            dataSet=data.readExcel(filePath).getDataSet();
 
             for (int i = 0; i <dataSet.getRow() ; i++) {
                 for (int j = 0; j <dataSet.getCol() ; j++) {

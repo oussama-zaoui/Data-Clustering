@@ -58,7 +58,7 @@
       <VBox prefHeight="682.0" prefWidth="206.0" style="-fx-background-color: #2fba93;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="206.0" text="IMPORT(xls/xslx)" />
+            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="206.0" text="IMPORT(xls/xslx)" onAction="#openFile"/>
          </children>
       </VBox>
    </children>
