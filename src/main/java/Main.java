@@ -12,12 +12,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        URL url = new File("src/main/resources/sample.fxml").toURI().toURL();
+        URL url = new File("src/main/resources/fxml/sample.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        //Parent root = FXMLLoader.load(getClass().getResource("src/main/resources/sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        //Parent root = FXMLLoader.load(getClass().getResource("src/main/resources/fxml/sample.fxml"));
+        primaryStage.setTitle("Data-Clustering");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
 

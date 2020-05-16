@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
+    <children>
+        <Text fill="#2fba93" fontSmoothingType="LCD" layoutX="139.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data-Clustering" wrappingWidth="332.97509765625">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Text>
+        <TabPane layoutX="204.0" layoutY="45.0" prefHeight="634.0" prefWidth="684.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="DATA Tab">
+                    <content>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                            <content>
+
+                            </content>
+                            <content>
+                                <GridPane fx:id="table" prefHeight="607.0" prefWidth="684.0">
+                                    <columnConstraints>
+
+                                    </columnConstraints>
+                                    <rowConstraints>
+
+                                    </rowConstraints>
+                                </GridPane>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+                <Tab text="PLOT Tab">
+                    <content>
+                        <Pane fx:id="grandPane" prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Button layoutX="120.0" layoutY="501.0" mnemonicParsing="false" onAction="#plot" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #2fba93;" text="PLOT" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Button>
+                                <TextField fx:id="k" layoutX="546.0" layoutY="84.0" prefHeight="25.0" prefWidth="123.0" promptText="Clusters(K)" />
+                                <TextField fx:id="maxIterations" layoutX="546.0" layoutY="144.0" prefHeight="25.0" prefWidth="123.0" promptText="MAXIterations" />
+                                <Text fill="#2fba93" layoutX="174.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="K-Means Clustering" textAlignment="CENTER" wrappingWidth="330.7294921875">
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </Text>
+                                <Pane fx:id="pane" layoutX="3.0" layoutY="53.0" prefHeight="387.0" prefWidth="523.0" />
+                                <Button layoutX="365.0" layoutY="501.0" mnemonicParsing="false" onAction="#clusterize" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #2fba93;" text="CLUSTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </Pane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <VBox layoutX="-4.0" layoutY="42.0" prefHeight="634.0" prefWidth="203.0" style="-fx-background-color: #2fba93;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <children>
+                <Pane prefHeight="134.0" prefWidth="203.0" />
+                <Button mnemonicParsing="false" onAction="#openFile" prefHeight="48.0" prefWidth="203.0" style="-fx-background-color: #2fba93;" text="IMPORT" textFill="#ecf2f0">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/icons/icons8-microsoft-excel-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="203.0" style="-fx-background-color: #2fba93;" text="Plot" textFill="#ecf2f0">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/icons/icons8-graphique-nuée-de-point-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false"  prefHeight="51.0" prefWidth="203.0" style="-fx-background-color: #2fba93;" text="About" textFill="#ecf2f0">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/icons/icons8-information-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button layoutX="10.0" layoutY="186.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="203.0" style="-fx-background-color: #2fba93;" text="Settings" textFill="#ecf2f0">
+                    <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/icons/icons8-paramètres-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+        <ImageView fitHeight="48.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="75.0">
+            <image>
+                <Image url="@/icons/icons8-statut-inconnu-80.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
