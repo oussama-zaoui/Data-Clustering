@@ -1,6 +1,7 @@
 package Controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import model.*;
 import util.ImportData;
@@ -28,6 +30,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    @FXML
     public Pane pane;
     public TextField k;
     public TextField maxIterations;
@@ -67,14 +70,16 @@ public class Controller implements Initializable {
         }
         for (int i = 0; i <dataSet.getCol() ; i++) {
             for (int j = 1; j <dataSet.getRow() ; j++) {
-                table.add(new Text(String.valueOf(dataSet.getData()[j][i])),i,j);
+                Text text=new Text(String.valueOf(dataSet.getData()[j][i]));
+                text.setTextAlignment(TextAlignment.CENTER);
+                table.add(text,i,j);
             }
         }
         table.setGridLinesVisible(true);
 
     }
 
-
+    @FXML
     public void openFile(ActionEvent event){
         FileChooser chooser=new FileChooser();
         chooser.setTitle("Open Resource File");
@@ -90,6 +95,7 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
     public void plot(ActionEvent evente){
         ImportData data=new ImportData();
         try{
@@ -127,12 +133,12 @@ public class Controller implements Initializable {
         }
     }
 
-
-    public void clusterize(ActionEvent event){
+     @FXML
+    public void clustering(ActionEvent event){
 
         pane.getChildren().clear();
         kmeans=new Kmeans(acp,Integer.parseInt(k.getText()));
-        ArrayList<Cluster> clusters=new ArrayList<>(kmeans.clauster(Integer.parseInt(maxIterations.getText())));
+        ArrayList<Cluster> clusters=new ArrayList<>(kmeans.cluster(Integer.parseInt(maxIterations.getText())));
         final NumberAxis xAxis=new NumberAxis(-5,5,0.5);
         final NumberAxis yAxis=new NumberAxis(-5,5,0.5);
         ScatterChart<Number,Number> chart= new ScatterChart<>(xAxis, yAxis);

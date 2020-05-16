@@ -1,8 +1,6 @@
 package model;
 
-import model.Acp;
-import model.Cluster;
-import model.Coordonée;
+
 
 import java.util.ArrayList;
 
@@ -20,26 +18,12 @@ public class Kmeans {
         this.k=k;
     }
 
-    public Acp getInput() {
-        return input;
-    }
-
-    public int getK() {
-        return k;
-    }
-
-    public void setInput(Acp input) {
-        this.input = input;
-    }
-
-    public void setK(int k) {
-        this.k = k;
-    }
+   
 
 
-    public ArrayList<Cluster> clauster(int maxIterations) {
+    public ArrayList<Cluster> cluster(int maxIterations) {
         ArrayList<Coordonée> points = new ArrayList<>(this.input.cammon());
-        ArrayList<Cluster> clausters = new ArrayList<>(initialClausters(this.k, points));
+        ArrayList<Cluster> clausters = new ArrayList<>(initialClusters(this.k, points));
         ArrayList<Coordonée> centers = new ArrayList<>();
         for (int i = 0; i < clausters.size(); i++) {
             centers.add(clausters.get(i).getCoordonées().get(0));
@@ -85,7 +69,7 @@ public class Kmeans {
     }
 
 
-    public ArrayList<Cluster> initialClausters(int k,ArrayList<Coordonée> points){
+    public ArrayList<Cluster> initialClusters(int k, ArrayList<Coordonée> points){
         ArrayList<Cluster> clausters=new ArrayList<>();
 
         for (int i = 0; i <k ; i++) {

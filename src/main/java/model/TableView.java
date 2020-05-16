@@ -8,11 +8,6 @@ public class TableView {
     private DataSet dataSet;
 
 
-    public TableView(ArrayList<String> entet,DataSet dataSet){
-        this.entet=entet;
-        this.dataSet=dataSet;
-    }
-
     public TableView() {
 
     }
